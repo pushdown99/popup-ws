@@ -1,0 +1,95 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>websocket Demo</title>
+  <link href="https://fonts.googleapis.com/css?family=Ropa+Sans" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Ropa Sans', sans-serif;
+      color: #333;
+      max-width: 640px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    #githubLink {
+      position: absolute;
+      right: 0;
+      top: 12px;
+      color: #2D99FF;
+    }
+
+    h1 {
+      margin: 10px 0;
+      font-size: 40px;
+    }
+
+    #loadingMessage {
+      text-align: center;
+      padding: 40px;
+      background-color: #eee;
+    }
+
+    #canvas {
+      width: 100%;
+    }
+
+    #output {
+      margin-top: 20px;
+      background: #eee;
+      padding: 10px;
+      padding-bottom: 0;
+    }
+
+    #output div {
+      padding-bottom: 10px;
+      word-wrap: break-word;
+    }
+
+    #noQRFound {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>websocket Demo</h1>
+  <input type="text" id="inputMessage" value="Hello, Web Socket!"><button id="sendButton">Send</button>
+  <pre id="output"></pre>
+  <script>
+    var log = function(s) {
+        console.log(s);
+        if (document.readyState !== "complete") {
+            log.buffer.push(s);
+        } else {
+            document.getElementById("output").innerHTML += (s + "\n")
+        }
+    }
+    log.buffer = [];
+    // 아래 값은 상황에 맞게 변경할 것
+    url = "ws://127.0.0.1:3000";
+    w = new WebSocket(url);
+ 
+    w.onopen = function() {
+        log("open");
+        w.send("thank you for accepting this Web Socket request");
+    }
+ 
+    w.onmessage = function(e) {
+        console.log(e.data);
+        log(e.data);
+    }
+ 
+    w.onclose = function(e) {
+        log("closed");
+    }
+ 
+    window.onload = function() {
+        log(log.buffer.join("\n"));
+        document.getElementById("sendButton").onclick = function() {
+            console.log(document.getElementById("inputMessage").value);
+            w.send(document.getElementById("inputMessage").value);
+        }
+    }
+  </script>
+</body>
+</html>

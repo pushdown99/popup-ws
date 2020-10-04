@@ -1,0 +1,67 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>QRcode Demo</title>
+  <link href="https://fonts.googleapis.com/css?family=Ropa+Sans" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Ropa Sans', sans-serif;
+      color: #333;
+      max-width: 640px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    #githubLink {
+      position: absolute;
+      right: 0;
+      top: 12px;
+      color: #2D99FF;
+    }
+
+    h1 {
+      margin: 10px 0;
+      font-size: 40px;
+    }
+
+    #loadingMessage {
+      text-align: center;
+      padding: 40px;
+      background-color: #eee;
+    }
+
+    #canvas {
+      width: 100%;
+    }
+
+    #output {
+      margin-top: 20px;
+      background: #eee;
+      padding: 10px;
+      padding-bottom: 0;
+    }
+
+    #output div {
+      padding-bottom: 10px;
+      word-wrap: break-word;
+    }
+
+    #noQRFound {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>QRcode Demo</h1>
+  <body>
+    <canvas id="canvas"></canvas>
+    <script src="/js/qrcode.min.js"></script>
+    <script>
+      var size = 300;
+      QRCode.toCanvas(document.getElementById('canvas'), 'sample text', {height:size, width: size, margin:10}, function (error) {
+        if (error) console.error(error)
+        console.log('success!');
+      })
+    </script> 
+    </body>
+</html>

@@ -1,0 +1,89 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Login Demo</title>
+  <link href="https://fonts.googleapis.com/css?family=Ropa+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      font-family: 'Ropa Sans', sans-serif;
+      color: #333;
+      max-width: 640px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    #githubLink {
+      position: absolute;
+      right: 0;
+      top: 12px;
+      color: #2D99FF;
+    }
+
+    h1 {
+      margin: 10px 0;
+      font-size: 40px;
+    }
+
+    #loadingMessage {
+      text-align: center;
+      padding: 40px;
+      background-color: #eee;
+    }
+
+    #canvas {
+      width: 100%;
+    }
+
+    #output {
+      margin-top: 20px;
+      background: #eee;
+      padding: 10px;
+      padding-bottom: 0;
+    }
+
+    #output div {
+      padding-bottom: 10px;
+      word-wrap: break-word;
+    }
+
+    #noQRFound {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<form action="/auth/local" method="post" name="frm_login" id="frm_login">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="text-center">Passport Login</h2>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" id="username" name="username" class="form-control input-lg" placeholder="ID" required="required" autocomplete="off" />
+                </div>
+                <div class="errorTxt"></div>
+                <div class="form-group">
+                    <input type="password" id="password" name="password" class="form-control input-lg" placeholder="Password" required="required" autocomplete="off" />
+                </div>
+                <div class="errorTxt"></div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-block btn-lg btn-default btn_login" value="Login" />
+                    <a href="/auth/google" class="btn btn-block btn-lg btn-primary btn_login">Google</a>
+                    <a href="/auth/facebook" class="btn btn-block btn-lg btn-primary btn_login">Facebook</a>
+                    <a href="/auth/microsoft" class="btn btn-block btn-lg btn-primary btn_login">Microsoft</a>
+                    <a href="/auth/kakao" class="btn btn-block btn-lg btn-primary btn_login">Kakao</a>
+                    <a href="/auth/naver" class="btn btn-block btn-lg btn-primary btn_login">Naver</a>
+                    <a href="/auth/openbank" class="btn btn-block btn-lg btn-primary btn_login">OpenPlatrform (KFTC)</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>
